@@ -38,4 +38,12 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
+  def orderby
+	@orderdata = params[:orderdata]
+	if @orderdata == 'title'
+		@movies = Movie.all({:order=>'title ASC'})
+	else
+		@movies = Movie.all({:order=>'release_date ASC'})
+	end
+  end
 end
